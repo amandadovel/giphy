@@ -1,17 +1,3 @@
-// Need to create onlick event for buttons already on page
-
-// $("button").on("click", function() {
-//     var gif = $(this).attr("data-gif");
-//     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-//       gif + "&api_key=7EiJY9mrc7EqEPuPawrHUGKTDq4AG5pX&limit=10";
-
-// // ajax call 
-
-// $.ajax({
-//     url: queryUrl,
-//     method: "GET"
-//   })
-
 // Need to create array of initial gif buttons
 // Need variables for still and animated images
 
@@ -64,15 +50,35 @@ $("#gif-input").on("click", function() {
     $("#alert-message").text("");
 })
 
-$("#buttons-view").on("click", ".gifbtn", function() {
+$("button").on("click", function() {
     var selectedGif = $(this).data("gif");
     console.log(selectedGif);
-    var queryUrl = "http://api.giphy.com/v1/gifs/search?q=" + selectedGif + "&api_key=7EiJY9mrc7EqEPuPawrHUGKTDq4AG5pX&limit=10";
-    $.get(queryUrl, function(giphyResponse){
-    var giphyArray = giphyResponse.data;
-    console.log(giphyResponse.data);
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+    selectedGif + "&api_key=7EiJY9mrc7EqEPuPawrHUGKTDq4AG5pX&limit=10";
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
     })
-});
+
+    .then(function(response){
+    console.log(response);
+
+    // We want to get the title, rating, and 2 images, still and animated
+    // For each response item we want to create a div container, create an image, and some text elements
+
+    // for(var i = 0; i < results.length; i ++) {
+    //     var div = $("<div>").addClass("gifwrap");
+    //     var image = $("<img>").attr("src", results[i].images.original_still.url).attr("alt", results[i].title).data("still", results[i].images.original_still.url).data("animate", results[i].images.original.url);
+    //     var h3 = $("<h3>").text(results[i].rating);
+    //     var p = $("<p>").text(results[i].title);
+    //     $(div).append(image, h3, p);
+    //     $("gif-view").append(div);
+    // }
+    })
+})
+
+//renderButtons();
 
 
 
