@@ -1,7 +1,7 @@
 // Need to create array of initial gif buttons
 // Need variables for still and animated images
 
-var gifs = ["snowboarding", "surfing", "skydiving", "motocross"];
+var gifs = ["snowboarding", "surfing", "skydiving", "motocross", "scuba diving", "skateboarding", "skiing", "wing suit"];
 
 // function for displaying gif data
 
@@ -41,7 +41,7 @@ $("#add-gif").on("click", function (event) {
         renderButtons();
 
     } else {
-        $("#alert-message").text("Try another Giphy!");
+        $("#alert-message").text("Already used it, try another!");
         $("#gif-input").val("");
     }
 

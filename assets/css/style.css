@@ -1,0 +1,59 @@
+body {
+    background: url("../images/snowboarding.jpg") no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+}
+
+h1 {
+    font-family: 'Bowlby One SC', cursive;
+    text-align: center;
+}
+
+.gif-btn {
+    text-transform: capitalize;
+}
+
+.gif-btn:hover {
+    box-shadow: 2px 2px 10px 2px;
+    border-radius: 5px;
+}
+
+#add-gif {
+    box-shadow: 2px 2px 10px 2px;
+}
+
+#gif-input {
+    box-shadow: 2px 2px 7px 2px;
+}
+
+#buttons-view {
+    text-align: center;
+}
+
+#gif-form {
+    text-align: center;
+}
+
+.gifwrap {
+    text-align: center;
+    padding: 30px;
+}
+
+.result {
+    height: 250px;
+    width: 350px;
+    box-shadow: 2px 2px 10px 2px;
+    border-radius: 5px;
+}
+
+h3 {
+    text-transform: capitalize;
+    color: white;
+    padding-top: 10px;
+}
+
+p {
+    text-transform: capitalize;
+    color: white;
+}
+
