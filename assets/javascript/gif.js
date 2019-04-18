@@ -1,5 +1,4 @@
 // Need to create array of initial gif buttons
-// Need variables for still and animated images
 
 var gifs = ["snowboarding", "surfing", "skydiving", "motocross", "scuba diving", "skateboarding", "skiing", "wing suit"];
 
@@ -22,7 +21,7 @@ renderButtons();
 
 
 
-// Function that handles events where one button is clicked 
+// Function that handles events where button is clicked 
 
 $("#add-gif").on("click", function (event) {
     event.preventDefault();
@@ -39,7 +38,8 @@ $("#add-gif").on("click", function (event) {
         $("#gif-input").val("");
         $("#buttons-view").append(newGif);
         renderButtons();
-
+    
+    // if input is already in the movie array will alert user to try another and clear the input box
     } else {
         $("#alert-message").text("Already used it, try another!");
         $("#gif-input").val("");
@@ -47,23 +47,26 @@ $("#add-gif").on("click", function (event) {
 
 });
 
-
-
+// I found this bit of code as I am going over it all and I'm not quite sure why its here or if its necessary,
+// when I comment it out it doesnt seem to change the page at all. But I felt like if it isnt breaking it then might as well leave it there. 
 $("#gif-input").on("click", function () {
     $("#alert-message").text("");
 })
 
+// assigns variable to when gif button is clicked and also uses api key to get gif data 
 $("#buttons-view").on("click", ".gif-btn", function () {
     var selectedGif = $(this).data("gif");
     // console.log(selectedGif);
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
         selectedGif + "&api_key=7EiJY9mrc7EqEPuPawrHUGKTDq4AG5pX&limit=10";
 
+    // makes ajax call
     $.ajax({
         url: queryURL,
         method: "GET"
     })
 
+    // function that grabs results from the response of the api and ajax call 
         .then(function (response) {
             var results = response.data;
             console.log(results);
@@ -72,9 +75,11 @@ $("#buttons-view").on("click", ".gif-btn", function () {
 
             // We want to get the title, rating, and 2 images, still and animated
             // For each response item we want to create a div container, create an image, and some text elements
-            
+            // creates horizontal line underneathe text box  to separate images from text
+            // text pops up to give user instructions 
+
             var hr = $("<hr>");
-            var p = $("<p>").text("Click on image to see it animate!").attr("align", "center");
+            var p = $("<p>").text("Click on an image to see it animate!").attr("align", "center");
             $("#gif-view").append(hr, p);
 
             for (var i = 0; i < results.length; i++) {
