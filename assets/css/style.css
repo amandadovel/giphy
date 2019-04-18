@@ -1,3 +1,10 @@
+* {
+    outline: none;
+}
+.btn:focus {
+    outline: 0;
+    box-shadow: none !important; 
+}
 body {
     background: url("../images/snowboarding.jpg") no-repeat center center fixed;
     background-size: cover;
@@ -11,6 +18,7 @@ h1 {
 
 .gif-btn {
     text-transform: capitalize;
+    font-family: 'Playfair Display', serif, bold;
 }
 
 .gif-btn:hover {

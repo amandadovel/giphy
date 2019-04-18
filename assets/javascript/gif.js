@@ -67,10 +67,15 @@ $("#buttons-view").on("click", ".gif-btn", function () {
         .then(function (response) {
             var results = response.data;
             console.log(results);
+            $("#gif-view").empty();
 
 
             // We want to get the title, rating, and 2 images, still and animated
             // For each response item we want to create a div container, create an image, and some text elements
+            
+            var hr = $("<hr>");
+            var p = $("<p>").text("Click on image to see it animate!").attr("align", "center");
+            $("#gif-view").append(hr, p);
 
             for (var i = 0; i < results.length; i++) {
 
@@ -97,7 +102,7 @@ $("#buttons-view").on("click", ".gif-btn", function () {
                 var p = $("<p>").text(results[i].title);
 
                 $(div).append(image, h3, p);
-                $("#gif-view").prepend(div);
+                $("#gif-view").append(div);
             }
         })
 
